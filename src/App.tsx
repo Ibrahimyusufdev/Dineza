@@ -1,9 +1,22 @@
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PublicLayout from "./components/layouts/PublicLayout";
+import LandingPage from "./pages/landing/LandingPage";
+import NoPage from "./pages/error/NoPage";
 
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        {/* Public layout routing */}
+        <Route path="/" element={<PublicLayout />}>
+          <Route index element={<LandingPage />} />
+        </Route>
 
-export default App
+        {/* No page Route */}
+        <Route path="*" element={<NoPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default App;
