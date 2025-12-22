@@ -1,4 +1,3 @@
-import ContentWrapper from "../common/ContentWrapper";
 import NavBar from "./NavBar";
 
 const Header = () => {
@@ -6,7 +5,7 @@ const Header = () => {
     <>
       <NavBar />
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
