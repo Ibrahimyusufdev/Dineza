@@ -10,10 +10,10 @@ import {
 } from "@/components/ui/sidebar";
 import { Link } from "react-router-dom";
 
-import type { NavItems } from "./navigation.types";
+import type { SidebarConfig } from "./sidebarConfig.types";
 
 interface NavMainProps {
-  items: NavItems[];
+  items: SidebarConfig[];
 }
 
 const NavMain = ({ items }: NavMainProps) => {

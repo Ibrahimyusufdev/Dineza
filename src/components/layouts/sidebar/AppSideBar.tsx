@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/sidebar";
 import SideHeader from "./SideHeader";
 
-import type { NavItems } from "./navigation.types";
+import type { SidebarConfig } from "./sidebarConfig.types";
 import {
   LayoutDashboard,
   Compass,
@@ -19,16 +19,17 @@ import {
   ChartNoAxesColumnDecreasing,
 } from "lucide-react";
 import NavMain from "./NavMain";
+import NavFooter from "./NavFooter";
 
 const AppSideBar = () => {
   // sidebar data
-  const sideBarData: NavItems[] = [
-    { title: "Dashboard", path: "/", icon: LayoutDashboard },
-    { title: "Explore Restaurants", path: "/user/explore", icon: Compass },
-    { title: "My Reservations", path: "/user/reservations", icon: Book },
-    { title: "My Earnings", path: "/user/earnings", icon: DollarSign },
-    { title: "Invite Friends", path: "/user/invite", icon: Share2 },
-    { title: "Invite Messages", path: "/user/messages", icon: MessageSquareText },
+  const sideBarData: SidebarConfig[] = [
+    { title: "Dashboard", path: "/diner/dashboard", icon: LayoutDashboard },
+    { title: "Explore Restaurants", path: "/diner/explore", icon: Compass },
+    { title: "My Reservations", path: "/diner/reservations", icon: Book },
+    { title: "My Earnings", path: "/diner/earnings", icon: DollarSign },
+    { title: "Invite Friends", path: "/diner/invite", icon: Share2 },
+    { title: "Invite Messages", path: "/diner/messages", icon: MessageSquareText },
   ];
   return (
     <Sidebar collapsible="icon">
@@ -36,10 +37,15 @@ const AppSideBar = () => {
         <SideHeader />
       </SidebarHeader>
 
+      {/* Main navigation items */}
       <SidebarContent>
-        {/* Main navigation items */}
         <NavMain items={sideBarData} />
       </SidebarContent>
+
+      {/* Footer navigation items, where user can also signout */}
+      <SidebarFooter>
+        <NavFooter />
+      </SidebarFooter>
     </Sidebar>
   );
 };

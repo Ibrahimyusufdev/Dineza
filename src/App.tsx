@@ -7,6 +7,9 @@ import NoPage from "./pages/error/NoPage";
 import AboutPage from "./pages/static/AboutPage";
 import ContactPage from "./pages/static/ContactPage";
 import FaqPage from "./pages/static/FaqPage";
+import { DashboardPage } from "./domains/diner/dashboard";
+import DashboardLayout from "./components/layouts/DashboardLayout";
+import AuthLayout from "./components/layouts/AuthLayout";
 
 const App = () => {
   return (
@@ -18,9 +21,16 @@ const App = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/faq" element={<FaqPage />} />
+        </Route>
 
-          {/* Auth Layout routing */}
+        {/* Auth Layout routing */}
+        <Route element={<AuthLayout />}>
           
+        </Route>
+
+        {/* Dashboard layout routing */}
+        <Route element={<DashboardLayout />}>
+          <Route path="/diner/dashboard" element={<DashboardPage />} />
         </Route>
 
         {/* No page Route */}

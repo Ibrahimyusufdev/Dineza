@@ -1,5 +1,43 @@
 // Routes
 
 export const ROUTES = {
+  // Public
   HOME: "/",
+  ABOUT: "/about",
+  CONTACT: "/contact",
+  FAQ: "faq",
+  LOGIN: "/login",
+  DINER_REGISTER: "/diner/register",
+  RESTAURANT_REGISTER: "/restaurant/register",
+
+  // Diner dashboard
+  DINER_DASHBOARD: "/diner/dashboard",
+  DINER_EXPLORE: "/diner/explore",
+  DINER_RESERVATIONS: "/diner/reservations",
+  DINER_EARNINGS: "/diner/earnings",
+  DINER_INVITE: "/diner/invite",
+  DINER_MESSAGES: "/diner/messages",
+  DINER_PROFILE: "/diner/profile",
+  DINER_SETTINGS: "/diner/settings",
+  DINER_NOTIFICATIONS: "/diner/notifications",
+
+  // Restaurant dashboard
+  RESTAURANT_DASHBOARD: "/restaurant/dashboard",
+  RESTAURANT_RESERVATION: "/restaurant/reservations",
+  RESTAURANT_OFFER: "/restaurant/offer",
+  RESTAURANT_ANALYTICS: "/restaurant/analytics",
+  RESTAURANT_INVITE: "/restaurant/invite",
+  RESTAURANT_PAYMENT: "/restaurant/payment",
+  RESTAURANT_MESSAGES: "/restaurant/messages",
+  RESTAURANT_PROFILE: "/restaurant/profile",
+} as const;
+
+export const EXTERNAL_LINKS = {
+  SUPPORT_EMAIL: "support@dinezaap.com",
+  SUPPORT_PHONE: "(234) 706-893-6114",
+  TERMS_OF_SERVICE: "/terms",
+  PRIVACY_POLICY: "/privacy",
+  INSTAGRAM: "#",
+  FACEBOOK: "#",
+  TWITTER: "#",
 } as const;
