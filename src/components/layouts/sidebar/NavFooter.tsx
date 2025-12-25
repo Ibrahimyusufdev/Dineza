@@ -32,24 +32,17 @@ import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import type { SidebarConfig } from "./sidebarConfig.types";
 
+interface NavFooterProps {
+  items: SidebarConfig
+}
+
 const NavFooter = () => {
   // wiring up fake user
-  interface User extends SidebarConfig {
+  interface User  {
     name: string;
     email: string;
     avatar?: string;
   }
-
-  interface Footer {
-    title: string;
-    path: string;
-    icon: LucideIcon;
-  }
-
-  const navFooter: Footer[] = [
-    { title: "Settings", path: "diner/settings", icon: Settings },
-    { title: "Notifications", path: "diner/notifications", icon: Bell },
-  ];
 
   const user: User = {
     name: "Ibrahim Yusuf",

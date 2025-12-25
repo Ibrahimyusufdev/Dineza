@@ -1,3 +1,3 @@
 // Export dashboard page of my diners via alias
 
-export { DashboardPage } from "./pages/DashboardPage.tsx";
+export { DashboardPage as DinersDashboardPage } from "./pages/DashboardPage.tsx";

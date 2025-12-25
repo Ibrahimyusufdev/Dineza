@@ -11,7 +11,7 @@ export const ROUTES = {
   RESTAURANT_REGISTER: "/restaurant/register",
 
   // Diner dashboard
-  DINER_DASHBOARD: "/diner/dashboard",
+  DINER_DASHBOARD: "/diner",
   DINER_EXPLORE: "/diner/explore",
   DINER_RESERVATIONS: "/diner/reservations",
   DINER_EARNINGS: "/diner/earnings",
@@ -22,7 +22,7 @@ export const ROUTES = {
   DINER_NOTIFICATIONS: "/diner/notifications",
 
   // Restaurant dashboard
-  RESTAURANT_DASHBOARD: "/restaurant/dashboard",
+  RESTAURANT_DASHBOARD: "/restaurant",
   RESTAURANT_RESERVATION: "/restaurant/reservations",
   RESTAURANT_OFFER: "/restaurant/offer",
   RESTAURANT_ANALYTICS: "/restaurant/analytics",
@@ -30,6 +30,8 @@ export const ROUTES = {
   RESTAURANT_PAYMENT: "/restaurant/payment",
   RESTAURANT_MESSAGES: "/restaurant/messages",
   RESTAURANT_PROFILE: "/restaurant/profile",
+  RESTAURANT_SETTINGS: "/restaurant/settings",
+  RESTAURANT_NOTIFICATIONS: "/restaurant/notifications",
 } as const;
 
 export const EXTERNAL_LINKS = {

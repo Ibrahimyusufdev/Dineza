@@ -13,13 +13,13 @@ import { Link } from "react-router-dom";
 import type { SidebarConfig } from "./sidebarConfig.types";
 
 interface NavMainProps {
-  items: SidebarConfig[];
+  items: SidebarConfig;
 }
 
 const NavMain = ({ items }: NavMainProps) => {
   return (
     <SidebarMenu>
-      {items.map((item) => (
+      {items.navigation.map((item) => (
         <SidebarMenuItem key={item.title}>
           <SidebarMenuButton tooltip={item.title} asChild>
             <Link to={item.path}>
