@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 
 import type { UserRole } from "@/types/common";
 
+
 export interface User {
   name: string;
   email: string;
@@ -24,7 +25,7 @@ export const useAuthStore = create<AuthState>()(
     persist(
       (set) => ({
         user: {
-          name: "Ibrahim",
+          name: "Ibrahim Yusuf",
           email: "Ibrahimyusuf1304@gmail.com",
           role: "diner",
         },

@@ -6,7 +6,6 @@ export interface NavItems {
   title: string;
   path: string;
   icon: LucideIcon;
-  isActive?: boolean;
 }
 export interface SidebarConfig {
   items: NavItems[];

@@ -18,12 +18,13 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
+import { getInitials } from "@/helpers/getInitials";
 
 // Lucide react
 import { ChevronsUpDown, LogOut } from "lucide-react";
 
 // React router
-import { Link, useNavigate } from "react-router-dom";
+import {Link, NavLink, useNavigate } from "react-router-dom";
 
 // Constant Route definition
 import { ROUTES } from "@/lib/constant";
@@ -85,9 +86,7 @@ const NavFooter = () => {
                 <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                   <Avatar className="h-8 w-8 rounded-lg">
                     <AvatarImage src={user.avatar} alt={user.name} />
-                    <AvatarFallback className="rounded-lg">
-                      {user.name.slice(0, 2).toUpperCase()}
-                    </AvatarFallback>
+                    <AvatarFallback className="rounded-lg">{getInitials(user.name)}</AvatarFallback>
                   </Avatar>
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-medium">{user.name}</span>
@@ -100,17 +99,25 @@ const NavFooter = () => {
 
             <DropdownMenuGroup>
               {config.footerItems.map((item) => (
-                <Link to={item.path}>
-                  <DropdownMenuItem>
+                <NavLink
+                  to={item.path}
+                  end
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-blue-50 text-blue-700"
+                      : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  }
+                >
+                  <DropdownMenuItem className="cursor-pointer">
                     <item.icon />
                     {item.title}
                   </DropdownMenuItem>
-                </Link>
+                </NavLink>
               ))}
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <Button onClick={handleLogout} variant="outline">
+            <DropdownMenuItem className="cursor-pointer">
+              <Button onClick={handleLogout} variant="outline" className="cursor-pointer">
                 <LogOut />
                 Log out
               </Button>

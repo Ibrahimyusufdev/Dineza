@@ -14,7 +14,7 @@ import SideHeader from "./SideHeader";
 import NavMain from "./NavMain";
 import NavFooter from "./NavFooter";
 
-const AppSideBar = () => {
+export const AppSideBar = () => {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -23,7 +23,7 @@ const AppSideBar = () => {
 
       {/* Main navigation items */}
       <SidebarContent>
-        <SidebarMenu>
+        <SidebarMenu >
           <NavMain />
         </SidebarMenu>
       </SidebarContent>
@@ -36,4 +36,3 @@ const AppSideBar = () => {
   );
 };
 
-export default AppSideBar;
