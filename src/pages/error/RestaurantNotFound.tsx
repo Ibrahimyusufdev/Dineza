@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import ContentWrapper from "@/components/common/ContentWrapper";
 import { Navigate } from "react-router-dom";
 import { useCountdown } from "@/hooks/useCountdown";

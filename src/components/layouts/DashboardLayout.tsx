@@ -1,31 +1,23 @@
 import { Outlet } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "../ui/sidebar";
-import AppSideBar from "./sidebar/AppSideBar";
+import AppSideBar from "../../sidebar/components/AppSideBar";
 import { useNavigate } from "react-router-dom";
 import type { User } from "@/types/common";
-import { getSidebarConfig } from "./sidebar/sidebarConfig.types";
+import { getSidebarConfig } from "@/sidebar";
 import { ROUTES } from "@/lib/constant";
 
+import { useAuthStore } from "@/features/auth";
+
 const DashboardLayout = () => {
-  // Wiring up fake user
+  // getting user data from my authstore
 
-  // sidebar data
+  const user = useAuthStore((state) => state.user);
 
-  const user: User = {
-    name: "Ibrahim Yusuf",
-    email: "Ibrahimyusuf1304@gmail.com",
-    role: "diner",
-  };
 
-  const config = getSidebarConfig(user.role);
 
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    navigate(ROUTES.LOGIN);
-  };
   return (
     <SidebarProvider>
-      <AppSideBar user={user} config={config} onLogout={handleLogout} />
+      <AppSideBar />
       <main className="flex-1 p-4">
         <SidebarTrigger />
         <Outlet />

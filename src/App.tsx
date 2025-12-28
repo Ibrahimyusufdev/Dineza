@@ -6,13 +6,15 @@ import LandingPage from "./pages/landing/LandingPage";
 import AboutPage from "./pages/static/AboutPage";
 import ContactPage from "./pages/static/ContactPage";
 import FaqPage from "./pages/static/FaqPage";
-import { DinersDashboardPage } from "@/domains/diner/dashboard";
+import { DinerDashboardPage } from "@/domains/diner/dashboard";
 import DashboardLayout from "./components/layouts/DashboardLayout";
 import AuthLayout from "./components/layouts/AuthLayout";
 import { RestaurantDashboardPage } from "@/domains/restaurant/dashboard";
 import { RestaurantNotFound } from "@/pages";
 import { DinerNotFound } from "@/pages";
 import { GlobalNoPage } from "@/pages";
+import { ROUTES } from "./lib/constant";
+import { DinerExplorePage } from "@/domains/diner/dashboard";
 
 const App = () => {
   return (
@@ -21,9 +23,9 @@ const App = () => {
         {/* Public layout routing */}
         <Route path="/" element={<PublicLayout />}>
           <Route index element={<LandingPage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="faq" element={<FaqPage />} />
+          <Route path={ROUTES.ABOUT} element={<AboutPage />} />
+          <Route path={ROUTES.CONTACT} element={<ContactPage />} />
+          <Route path={ROUTES.FAQ} element={<FaqPage />} />
 
           <Route path="*" element={<GlobalNoPage />} />
         </Route>
@@ -33,7 +35,8 @@ const App = () => {
 
         {/* diners dashboard layout routing */}
         <Route path="/diner/*" element={<DashboardLayout />}>
-          <Route index element={<DinersDashboardPage />} />
+          <Route index element={<DinerDashboardPage />} />
+          <Route path="explore" element={<DinerExplorePage />} />
 
           <Route path="*" element={<DinerNotFound />} />
         </Route>

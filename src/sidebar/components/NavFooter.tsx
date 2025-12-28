@@ -1,4 +1,6 @@
-// Shadcn ui
+/*
+  Shadcn ui
+*/
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -9,51 +11,40 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
 import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
   useSidebar,
 } from "@/components/ui/sidebar";
-import {
-  BadgeCheck,
-  Bell,
-  Settings,
-  ChevronsUpDown,
-  CreditCard,
-  LogOut,
-  Sparkles,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+// Lucide react
+import { ChevronsUpDown, LogOut } from "lucide-react";
 
 // React router
 import { Link, useNavigate } from "react-router-dom";
-import type { SidebarConfig } from "./sidebarConfig.types";
 
-interface NavFooterProps {
-  items: SidebarConfig
-}
+// Constant Route definition
+import { ROUTES } from "@/lib/constant";
+
+import { useAuthStore } from "@/features/auth";
+import { getSidebarConfig } from "../getSidebarConfig";
 
 const NavFooter = () => {
-  // wiring up fake user
-  interface User  {
-    name: string;
-    email: string;
-    avatar?: string;
-  }
+  // getting user data from my authstore
+  const user = useAuthStore((state) => state.user);
+  const config = getSidebarConfig(user.role);
 
-  const user: User = {
-    name: "Ibrahim Yusuf",
-    email: "Ibrahimyusuf1304@gmail.com",
-  };
   const navigate = useNavigate();
 
   // logout logic and redirecting to login page
   const handleLogout = () => {
-    // Don't forget to use logout from store and update the route path to use ts const for route
-    navigate("/");
+    /*
+    Don't forget to use logout from store and update the route path to use ts const for route
+    Also, don't forget to change the navigate Route to login
+   */
+    navigate(ROUTES.HOME);
   };
 
   const isMobile = useSidebar();
@@ -89,7 +80,7 @@ const NavFooter = () => {
             sideOffset={4}
           >
             {/* Change to routing you want to go to, and use TS */}
-            <Link to="/diner/account">
+            <Link to={`/${user.role}/profile`}>
               <DropdownMenuLabel className="p-0 font-normal">
                 <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                   <Avatar className="h-8 w-8 rounded-lg">
@@ -108,11 +99,11 @@ const NavFooter = () => {
             <DropdownMenuSeparator />
 
             <DropdownMenuGroup>
-              {navFooter.map((nav) => (
-                <Link to={nav.path}>
+              {config.footerItems.map((item) => (
+                <Link to={item.path}>
                   <DropdownMenuItem>
-                    <nav.icon />
-                    {nav.title}
+                    <item.icon />
+                    {item.title}
                   </DropdownMenuItem>
                 </Link>
               ))}

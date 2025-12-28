@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useCountdown = (initialSeconds: number) => {
-  
+
   const [seconds, setSeconds] = useState(initialSeconds);
 
     useEffect(() => {

@@ -1,10 +1,9 @@
 // Routes
-
 export const ROUTES = {
   // Public
   HOME: "/",
-  ABOUT: "/about",
-  CONTACT: "/contact",
+  ABOUT: "about",
+  CONTACT: "contact",
   FAQ: "faq",
   LOGIN: "/login",
   DINER_REGISTER: "/diner/register",
