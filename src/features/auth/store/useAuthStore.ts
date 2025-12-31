@@ -28,6 +28,7 @@ export const useAuthStore = create<AuthState>()(
           name: "Ibrahim Yusuf",
           email: "Ibrahimyusuf1304@gmail.com",
           role: "diner",
+          avatar: "/public/Headshot.jpeg"
         },
       }),
       {

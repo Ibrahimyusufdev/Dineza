@@ -1,6 +1,6 @@
 import NavBar from "./NavBar";
 
-const Header = () => {
+const HeaderLanding = () => {
   return (
     <>
       <NavBar />
@@ -8,4 +8,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderLanding;

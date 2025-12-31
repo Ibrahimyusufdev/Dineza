@@ -14,25 +14,27 @@ import SideHeader from "./SideHeader";
 import NavMain from "./NavMain";
 import NavFooter from "./NavFooter";
 
+
 export const AppSideBar = () => {
   return (
-    <Sidebar collapsible="icon">
-      <SidebarHeader>
-        <SideHeader />
-      </SidebarHeader>
+    <>
+      <Sidebar collapsible="icon">
+        <SidebarHeader>
+          <SideHeader />
+        </SidebarHeader>
 
-      {/* Main navigation items */}
-      <SidebarContent>
-        <SidebarMenu >
-          <NavMain />
-        </SidebarMenu>
-      </SidebarContent>
+        {/* Main navigation items */}
+        <SidebarContent>
+          <SidebarMenu>
+            <NavMain />
+          </SidebarMenu>
+        </SidebarContent>
 
-      {/* Footer navigation items, where user can also signout */}
-      <SidebarFooter>
-        <NavFooter />
-      </SidebarFooter>
-    </Sidebar>
+        {/* Footer navigation items, where user can also signout */}
+        <SidebarFooter>
+          <NavFooter />
+        </SidebarFooter>
+      </Sidebar>
+    </>
   );
 };
-

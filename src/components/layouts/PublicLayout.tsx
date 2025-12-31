@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
-import Header from "./Header";
+import HeaderLanding from "./HeaderLanding";
 
 const PublicLayout = () => {
   return (
     <section>
-      <Header />
+      <HeaderLanding />
       <Outlet />
       <Footer />
     </section>

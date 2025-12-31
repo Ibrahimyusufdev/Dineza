@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { getInitials } from "./helpers/getInitials";
+
 
 // Public Routing pages
 import PublicLayout from "./components/layouts/PublicLayout";
