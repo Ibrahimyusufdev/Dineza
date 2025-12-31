@@ -12,6 +12,8 @@ const AuthLayout = () => {
         </div>
         <span className="font-medium">DinezaApp</span>
       </Link>
+
+      {/* Outlet for login and register page */}
       <Outlet />
     </section>
   );
