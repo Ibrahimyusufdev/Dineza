@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/features/auth";
 import { ROUTES } from "@/lib/constant";
-import { UnauthorizedPage } from "@/pages";
+
 import type { UserRole } from "@/types/common";
 import { Navigate, Outlet } from "react-router-dom";
 
