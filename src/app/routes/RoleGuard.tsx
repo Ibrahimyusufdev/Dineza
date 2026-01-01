@@ -1,5 +1,6 @@
 import { useAuthStore } from "@/features/auth";
 import { ROUTES } from "@/lib/constant";
+import { UnauthorizedPage } from "@/pages";
 import type { UserRole } from "@/types/common";
 import { Navigate, Outlet } from "react-router-dom";
 
@@ -18,7 +19,7 @@ const RoleGuard = ({ allowedRoles }: RoleGuardProps) => {
 
   // Check if a user role is the in the allowed list
   if (!allowedRoles.includes(user.role)) {
-    return <Navigate to={`/${user.role}`} replace />;
+    return <Navigate to={ROUTES.UNAUTHORIZED} replace />;
   }
 
   return <Outlet />;

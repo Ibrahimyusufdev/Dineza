@@ -20,7 +20,7 @@ import { dinerRoutes } from "./routes/diner-routes";
 import { restaurantRoutes } from "./routes/restaurant-routes";
 
 // Global Error Page
-import { GlobalNoPage } from "@/pages";
+import { GlobalNoPage, UnauthorizedPage } from "@/pages";
 
 // ROUTING constant
 import { ROUTES } from "@/lib/constant";
@@ -34,7 +34,6 @@ export const AppRouter = () => {
         <Route path={ROUTES.ABOUT} element={<AboutPage />} />
         <Route path={ROUTES.CONTACT} element={<ContactPage />} />{" "}
         <Route path={ROUTES.FAQ} element={<FaqPage />} />
-        <Route path="*" element={<GlobalNoPage />} />
       </Route>
 
       {/* Auth Layout routing */}
@@ -54,6 +53,10 @@ export const AppRouter = () => {
           <Route element={<RoleGuard allowedRoles={["restaurant"]} />}>{restaurantRoutes}</Route>
         </Route>
       </Route>
+
+      {/* Error and unauthorized */}
+      <Route path="/unauthorized" element={<UnauthorizedPage />} />
+      <Route path="*" element={<GlobalNoPage />} />
     </Routes>
   );
 };

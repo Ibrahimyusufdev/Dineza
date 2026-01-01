@@ -27,7 +27,7 @@ export const useAuthStore = create<AuthState>()(
   immer(
     persist(
       (set) => ({
-        user: { name: "Ibrahim Yusuf", email: "Ibrahimyusuf1304@gmail.com", role: "restaurant" },
+        user: { name: "Ibrahim Yusuf", email: "Ibrahimyusuf1304@gmail.com", role: "diner" },
 
         isAuthenticated: true,
         isLoading: false,

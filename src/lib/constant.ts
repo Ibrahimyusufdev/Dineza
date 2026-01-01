@@ -1,13 +1,19 @@
+import { UnauthorizedPage } from "@/pages";
+
 // Routes
 export const ROUTES = {
   // Public
   HOME: "/",
-  ABOUT: "about",
-  CONTACT: "contact",
-  FAQ: "faq",
+  ABOUT: "/about",
+  CONTACT: "/contact",
+  FAQ: "/faq",
   LOGIN: "/login",
+  REGISTER_SELECT: "/register",
   DINER_REGISTER: "/diner/register",
   RESTAURANT_REGISTER: "/restaurant/register",
+
+  // Error
+  UNAUTHORIZED: "/unauthorized",
 
   // Diner dashboard
   DINER_DASHBOARD: "/diner",
