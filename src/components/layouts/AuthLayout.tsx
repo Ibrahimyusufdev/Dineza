@@ -1,9 +1,23 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { assets } from "@/assets/asset";
 import { ROUTES } from "@/lib/constant";
+import { useAuthStore } from "@/features/auth";
+import type { UserRole } from "@/types/common";
 
 const AuthLayout = () => {
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const user = useAuthStore((state) => state.user);
+
+  const ROLE_ROUTES: Record<UserRole, string> = {
+    diner: ROUTES.DINER_DASHBOARD,
+    restaurant: ROUTES.RESTAURANT_DASHBOARD,
+  };
+
+  if (isAuthenticated && user) {
+    return <Navigate to={ROLE_ROUTES[user.role] ?? ROUTES.HOME} />;
+  }
+
   return (
     <section className="min-h-screen">
       <Link to={ROUTES.HOME}>

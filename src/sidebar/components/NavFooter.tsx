@@ -24,7 +24,7 @@ import { getInitials } from "@/helpers/getInitials";
 import { ChevronsUpDown, LogOut } from "lucide-react";
 
 // React router
-import {Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 // Constant Route definition
 import { ROUTES } from "@/lib/constant";
@@ -35,17 +35,15 @@ import { getSidebarConfig } from "../getSidebarConfig";
 const NavFooter = () => {
   // getting user data from my authstore
   const user = useAuthStore((state) => state.user);
+  const logout = useAuthStore((state) => state.logout);
   const config = getSidebarConfig(user.role);
 
   const navigate = useNavigate();
 
   // logout logic and redirecting to login page
-  const handleLogout = () => {
-    /*
-    Don't forget to use logout from store and update the route path to use ts const for route
-    Also, don't forget to change the navigate Route to login
-   */
-    navigate(ROUTES.HOME);
+  const handleLogout = async () => {
+    await logout();
+    navigate(ROUTES.LOGIN);
   };
 
   const isMobile = useSidebar();
@@ -61,9 +59,7 @@ const NavFooter = () => {
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">
-                  {getInitials(user.name)}
-                </AvatarFallback>
+                <AvatarFallback className="rounded-lg">{getInitials(user.name)}</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">{user.name}</span>

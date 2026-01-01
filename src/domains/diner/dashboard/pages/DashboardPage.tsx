@@ -5,3 +5,4 @@ export const DashboardPage = () => {
    <h1>Welcome to diners dashboard page</h1>
   )
 }
+

@@ -4,21 +4,20 @@ import { Spinner } from "@/components/ui/spinner";
 import { useAuthStore } from "@/features/auth";
 import ContentWrapper from "@/components/common/ContentWrapper";
 import { ROUTES } from "@/lib/constant";
-import type { UserRole } from "@/types/common";
-
-
 
 const ProtectedRoutes = () => {
-  const user = useAuthStore((state) => state.user);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const isLoading = useAuthStore((state) => state.isLoading);
 
   const location = useLocation();
 
-  // Checking if user is logged in
+  // First checking if user is logged in
   if (isLoading) {
     return (
       <ContentWrapper>
-        <Spinner />
+        <div className="flex h-screen items-center justify-center">
+          <Spinner className="size-10" />
+        </div>
       </ContentWrapper>
     );
   }
@@ -27,10 +26,11 @@ const ProtectedRoutes = () => {
     Redirect to login, if user is not logged
     And also save where they were trying to go (to redirect back after login)
   */
-  if (!user) {
+  if (!isAuthenticated) {
     return <Navigate to={ROUTES.LOGIN} state={{ from: location }} replace />;
   }
 
+  // Outlet for protected route - show here
   return <Outlet />;
 };
 

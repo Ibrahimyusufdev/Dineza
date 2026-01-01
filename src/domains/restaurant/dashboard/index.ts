@@ -1,1 +1,2 @@
-export { DashboardPage as RestaurantDashboardPage } from "./pages/DashboardPage.tsx";
+export { DashboardPage } from "./pages/DashboardPage.tsx";
+export { AnalyticsPage } from "./pages/AnalyticsPage.tsx";

@@ -1,8 +1,6 @@
 
 
 export const ExplorePage = () => {
-  return (
-    <h1>Welcome to Explore page</h1>
-  )
-}
+  return <h1>Welcome to Explore page</h1>;
+};
 

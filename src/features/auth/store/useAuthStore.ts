@@ -4,7 +4,6 @@ import { persist } from "zustand/middleware";
 
 import type { UserRole } from "@/types/common";
 
-
 export interface User {
   name: string;
   email: string;
@@ -15,26 +14,38 @@ export interface User {
 interface AuthState {
   user: User | null;
   token?: string | null;
+  error?: string | null;
   isAuthenticated?: boolean;
   isLoading?: boolean;
-  isError?: boolean;
+
+  // Actions
+  setAuth?: (user: User, token: string) => void;
+  logout: () => void;
 }
 
 export const useAuthStore = create<AuthState>()(
   immer(
     persist(
       (set) => ({
-        user: {
-          name: "Ibrahim Yusuf",
-          email: "Ibrahimyusuf1304@gmail.com",
-          role: "diner",
-          avatar: "/public/Headshot.jpeg"
+        user: { name: "Ibrahim Yusuf", email: "Ibrahimyusuf1304@gmail.com", role: "restaurant" },
+
+        isAuthenticated: true,
+        isLoading: false,
+
+        logout: () => {
+          set((state) => {
+            state.user = null;
+            state.isAuthenticated = false;
+            state.isLoading = false;
+          });
         },
       }),
       {
         name: "user-storage",
         partialize: (state) => ({
           user: state.user,
+          // token: state.token,
+          isAuthenticated: state.isAuthenticated,
         }),
       }
     )
