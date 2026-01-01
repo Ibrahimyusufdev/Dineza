@@ -23,7 +23,7 @@ const SideHeader = () => {
             <div className="bg-sidebar-secondary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
               <img src={assets.logo} alt="Dineza logo" className="h-8 w-8" />
             </div>
-            <span className="font-medium">DinezaApp</span>
+            <span className="font-medium">Dineza</span>
           </Link>
         </SidebarMenuButton>
       </SidebarMenuItem>
