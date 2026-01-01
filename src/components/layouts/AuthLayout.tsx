@@ -1,11 +1,13 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { assets } from "@/assets/asset";
+
 import { ROUTES } from "@/lib/constant";
 import { useAuthStore } from "@/features/auth";
 import type { UserRole } from "@/types/common";
 
+import AuthHome from "../common/AuthHome";
+
 const AuthLayout = () => {
+  // Check if user is authenticated and only allow them to access authenticated route
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const user = useAuthStore((state) => state.user);
 
@@ -15,21 +17,19 @@ const AuthLayout = () => {
   };
 
   if (isAuthenticated && user) {
-    return <Navigate to={ROLE_ROUTES[user.role] ?? ROUTES.HOME} />;
+    return <Navigate to={ROLE_ROUTES[user.role] ?? ROUTES.HOME} replace />;
   }
 
   return (
-    <section className="min-h-screen">
-      <Link to={ROUTES.HOME}>
-        <div className="bg-sidebar-secondary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-          <img src={assets.logo} alt="Dineza logo" className="h-8 w-8" />
-        </div>
-        <span className="font-medium">DinezaApp</span>
-      </Link>
-
+    <main className="relative min-h-screen">
+      {/* Top lef logo */}
+      <AuthHome />
+      {/* Centered auth content */}
       {/* Outlet for login and register page */}
-      <Outlet />
-    </section>
+      <div className="flex min-h-screen items-center justify-center">
+        <Outlet />
+      </div>
+    </main>
   );
 };
 
