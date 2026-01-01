@@ -24,6 +24,7 @@ import { GlobalNoPage, UnauthorizedPage } from "@/pages";
 
 // ROUTING constant
 import { ROUTES } from "@/lib/constant";
+import { HelpPage } from "@/pages/static/HelpPage";
 
 export const AppRouter = () => {
   return (
@@ -34,12 +35,17 @@ export const AppRouter = () => {
         <Route path={ROUTES.ABOUT} element={<AboutPage />} />
         <Route path={ROUTES.CONTACT} element={<ContactPage />} />{" "}
         <Route path={ROUTES.FAQ} element={<FaqPage />} />
+        
       </Route>
+      <Route path="/help" element={<HelpPage />} />
+      
 
       {/* Auth Layout routing */}
       <Route element={<AuthLayout />}>
         <Route index path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+
+        {/* Add register page for diner and restaurant */}
       </Route>
 
       <Route element={<ProtectedRoutes />}>

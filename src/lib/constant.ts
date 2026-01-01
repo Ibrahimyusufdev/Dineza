@@ -1,4 +1,4 @@
-import { UnauthorizedPage } from "@/pages";
+
 
 // Routes
 export const ROUTES = {
@@ -7,6 +7,8 @@ export const ROUTES = {
   ABOUT: "/about",
   CONTACT: "/contact",
   FAQ: "/faq",
+
+  // Can only be access if not logged in
   LOGIN: "/login",
   REGISTER_SELECT: "/register",
   DINER_REGISTER: "/diner/register",
