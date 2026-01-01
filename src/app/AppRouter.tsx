@@ -35,10 +35,8 @@ export const AppRouter = () => {
         <Route path={ROUTES.ABOUT} element={<AboutPage />} />
         <Route path={ROUTES.CONTACT} element={<ContactPage />} />{" "}
         <Route path={ROUTES.FAQ} element={<FaqPage />} />
-        
+        <Route path="/help" element={<HelpPage />} />
       </Route>
-      <Route path="/help" element={<HelpPage />} />
-      
 
       {/* Auth Layout routing */}
       <Route element={<AuthLayout />}>

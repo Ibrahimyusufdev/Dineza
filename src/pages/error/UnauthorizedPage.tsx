@@ -8,17 +8,17 @@ import { Link } from "react-router-dom";
 import { ShieldAlert, Home, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// Wire up dashboard by role
+const DASHBOARD_BY_ROLE: Record<UserRole, string> = {
+  diner: ROUTES.DINER_DASHBOARD,
+  restaurant: ROUTES.RESTAURANT_DASHBOARD,
+};
+
 export const UnauthorizedPage = () => {
   const navigate = useNavigate();
 
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
-
-  // Wire up dashboard by role
-  const DASHBOARD_BY_ROLE: Record<UserRole, string> = {
-    diner: ROUTES.DINER_DASHBOARD,
-    restaurant: ROUTES.RESTAURANT_DASHBOARD,
-  };
 
   // Determine where to send them back
   const getCorrectDashboard = (): string => {

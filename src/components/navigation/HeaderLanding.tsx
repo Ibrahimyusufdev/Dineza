@@ -17,7 +17,6 @@ const HeaderLanding = () => {
   const navigate = useNavigate();
 
   //  Determine which dashboard route to send the user to
-
   const getCorrectDashboard = (): string => {
     if (!user) return ROUTES.LOGIN;
 
