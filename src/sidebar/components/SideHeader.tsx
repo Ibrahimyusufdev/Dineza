@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "@/lib/constant";
 import type { UserRole } from "@/types/common";
 
+// Wire up dashboard by role
+const DASHBOARD_BY_ROLE: Record<UserRole, string> = {
+  diner: ROUTES.DINER_DASHBOARD,
+  restaurant: ROUTES.RESTAURANT_DASHBOARD,
+};
+
 const SideHeader = () => {
   // getting user data from my authstore
   const user = useAuthStore((state) => state.user);
-
-  // Wire up dashboard by role
-  const DASHBOARD_BY_ROLE: Record<UserRole, string> = {
-    diner: ROUTES.DINER_DASHBOARD,
-    restaurant: ROUTES.RESTAURANT_DASHBOARD,
-  };
 
   return (
     <SidebarMenu>

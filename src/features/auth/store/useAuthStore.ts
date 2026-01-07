@@ -4,12 +4,15 @@ import { persist } from "zustand/middleware";
 
 import type { UserRole } from "@/types/common";
 
+// Base User Interface
 export interface User {
+  id?: string;
   name: string;
   email: string;
   role: UserRole;
   avatar?: string;
 }
+
 
 interface AuthState {
   user: User | null;
