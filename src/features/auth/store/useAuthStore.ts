@@ -51,7 +51,8 @@ export type AuthUser = Diner | Restaurant;
 export interface AuthState {
   // State of data
   user: AuthUser | null; // Current logged in user or null
-  token: string | null; // JWT token or null
+  accessToken: string | null; // short-lived token used to authenticate user
+  refreshToken: string | null; // Long-lived token use to generate new access token if expired for user authentication
   error?: string | null; // error from Api
 
   isAuthenticated: boolean; // Quick boolean check control to tell that a user is authenticated or not
