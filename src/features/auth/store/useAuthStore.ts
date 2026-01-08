@@ -19,7 +19,6 @@ export interface BaseUser {
   updatedAt: Date;
 }
 
-
 // Diner User - extending from Base User with specific field added
 export interface Diner extends BaseUser {
   role: "diner";
@@ -47,12 +46,10 @@ export interface Restaurant extends BaseUser {
 export type AuthUser = Diner | Restaurant;
 
 // wiring up AuthState
-
 export interface AuthState {
   // State of data
   user: AuthUser | null; // Current logged in user or null
   accessToken: string | null; // short-lived token used to authenticate user
-  refreshToken: string | null; // Long-lived token use to generate new access token if expired for user authentication
   error?: string | null; // error from Api
 
   isAuthenticated: boolean; // Quick boolean check control to tell that a user is authenticated or not
@@ -60,16 +57,20 @@ export interface AuthState {
   // isCheckingAuth: boolean; // Boolean check if user is authenticated or not
 
   //Actions
+
   // Set Auth - called after successful login/register, and also set User and token, and mark as authenticated
-  setAuth: (user: AuthUser, token: string) => void;
+  setAuth: (user: AuthUser, accessToken: string) => void;
+
+  // Set access token in memory
+  setAccessToken: (token: string | null) => void;
 
   // Control loading state, and use in auth initialization and Api calls
   setLoading?: (loading: boolean) => void;
 
   // Partially update user data
   updateAuthUser?: (userData: Partial<AuthUser>) => void;
-  
-  // Clears all auth data and reset to initial state 
+
+  // Clears all auth data and reset to initial state
   logout: () => void;
 }
 
@@ -77,43 +78,54 @@ export interface AuthState {
 Auth Store - Global Authentication state, persisted to localstorage, so users stay logged in
  */
 
-export const useAuthStore = create<AuthState>()(immer(persist((set) => ({
-  user: null,
-  token: null,
-  isAuthenticated: false,
-  isLoading: false,
+export const useAuthStore = create<AuthState>()(
+  immer(
+    persist(
+      (set) => ({
+        // Setting initial state
+        user: null,
+        accessToken: null,
+        isAuthenticated: false,
+        isLoading: false,
 
-  
-  setAuth: (user, token) => {
-    set((state) => {
-      state.user = user;
-      state.token = token;
-      state.isAuthenticated = true;
-      state.isLoading = false;
-    })
-  },
+        // Action implementation
+        setAuth: (user, accessToken) => {
+          set((state) => {
+            state.user = user;
+            state.accessToken = accessToken;
+            state.isAuthenticated = true;
+            state.isLoading = false;
+          });
+        },
 
-  setLoading: (loading) => {
-    set((state) => {
-      state.isLoading = loading;
-    })
-  },
+        setAccessToken: (token) => {
+          set((state) => {
+            state.accessToken = token;
+            state.isAuthenticated = true;
+          });
+        },
 
-  logout: () => {
-    set((state) => {
-      state.user = null;
-      state.token = null;
-      state.isAuthenticated = false;
-      state.isLoading = false
-    })
-  }
-  
-  
-}), {
-  name: "dineza-auth",
-  partialize: (state) => ({
-    user: state.user,
-    token: state.token,
-    isAuthenticated: state.isAuthenticated
-  })
-})))
+        setLoading: (loading) => {
+          set((state) => {
+            state.isLoading = loading;
+          });
+        },
+
+        logout: () => {
+          set((state) => {
+            state.user = null;
+            state.accessToken = null;
+            state.isAuthenticated = false;
+            state.isLoading = false;
+          });
+        },
+      }),
+      {
+        name: "dineza-auth",
+        partialize: (state) => ({
+          user: state.user,
+        }),
+      }
+    )
+  )
+);
